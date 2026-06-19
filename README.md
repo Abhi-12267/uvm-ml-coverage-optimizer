@@ -18,11 +18,16 @@ This framework reduces that waste by:
 ## Key Advantage
 Instead of blindly sampling a large stimulus space, the model estimates:
 
-$$P(\text{coverage\_bin}_i = 1 \mid \text{knobs})$$
+$$P(C_i = 1 \mid x)$$
 
 Then optimization searches for:
 
-$$x^* = \arg\max_x \sum_{i \in \text{target bins}} P(\text{coverage\_bin}_i = 1 \mid x)$$
+$$x^* = \arg\max_{x} \sum_{i \in \mathcal{T}} P(C_i = 1 \mid x)$$
+
+Where:
+1. $C_i$ is coverage bin $i$.
+2. $x$ is the stimulus knob vector.
+3. $\mathcal{T}$ is the set of target (unhit) bins.
 
 This typically cuts simulation effort for hard bins by a large factor.
 
